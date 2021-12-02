@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="r0">
+            <input type="text" id="calculator" readonly class="text">
+        </div>
+        <div class="r1">
+            <input type = "button" value="1" onclick="calc(this.value)"class="item">
+            <input type = "button" value="2" onclick="calc(this.value)"class="item">
+            <input type = "button" value="3" onclick="calc(this.value)"class="item">
+        </div>
+        <div class="r2">
+            <input type = "button" value="4" onclick="calc(this.value)" class="item">
+            <input type = "button" value="5" onclick="calc(this.value)"class="item">
+            <input type = "button" value="6" onclick="calc(this.value)"class="item">
+        </div>
+        <div class="r3">
+            <input type = "button" value="7" onclick="calc(this.value)"class="item">
+            <input type = "button" value="9" onclick="calc(this.value)"class="item">
+            <input type = "button" value="8" onclick="calc(this.value)"class="item">
+       </div>
+       <div class="r4">
+            <input type = "button" value="0" onclick="calc(this.value)"class="item">
+            <input type = "button" value="+" onclick="symb(this.value)"class="item">
+            <input type = "button" value="-" onclick="symb(this.value)"class="item">
+        </div>
+        <div class="r5">
+            <input type = "button" value="=" onclick="equal()" class = "equal">
+        </div>
+    </div>
+    
+</body>
+<script>
+    let number_one;
+    let number_two;
+    let symbol;
+    let result;
+    function calc(number) {
+        if (number_one == undefined){
+            number_one = number
+            document.getElementById("calculator").value = number
+            
+        }
+        else if(number_one != undefined && number_two == undefined){
+            number_two = number
+            document.getElementById("calculator").value += number
+            
+        } 
+    }
+
+    function symb(symvol){
+        if (symbol == undefined && number_one != undefined){
+            symbol = symvol
+            document.getElementById("calculator").value += symvol
+        }
+        else if(symbol == undefined && number_one == undefined)
+        document.getElementById("calculator").value = "Ошибка"
+
+    }
+    function equal(){
+        if(symbol == "+"){
+            result = (parseInt(number_one) + parseInt(number_two))
+            document.getElementById("calculator").value = result
+        }
+        else if(symbol =="-"){
+            result = (parseInt(number_one) - parseInt(number_two))
+            document.getElementById("calculator").value = result
+        }
+    }
+</script>
+</html> 
